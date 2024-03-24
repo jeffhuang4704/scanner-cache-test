@@ -43,9 +43,9 @@ Environment: lab VM (10.1.45.44) , Ubuntu 22.04
 
 | Records count | File size | 5️⃣ Action - Batch delete TTL records |
 | ------------- | --------- | ------------------------------------ |
-| 100 K         | 57MB      | < 4 sec, 21145 row                   |
-| 500 K         | 288MB     | < 12 sec, 21566 row                  |
-| 1 M           | 577MB     | < 23 sec, 21773 row                  |
+| 100 K         | 57MB      | < 4 sec, 21145 rows                  |
+| 500 K         | 288MB     | < 12 sec, 21566 rows                 |
+| 1 M           | 577MB     | < 23 sec, 21773 rows                 |
 | 3 M           | 1.73GB    | < 45 sec, 20193 rows                 |
 
 > Delete '20193' records from a database containing '3M' records.
