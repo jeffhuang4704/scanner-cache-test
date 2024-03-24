@@ -32,21 +32,38 @@ Compose a sample program demonstrating the insertion, updating, and retrieval of
 
 Environment: lab VM (10.1.45.44) , Ubuntu 22.04
 
-| Records count | File size | Action - Insert a record | Action - Get a record | Action - Update a record | Action - Delete a record | Action - Delete TTL records |
-| ------------- | --------- | ------------------------ | --------------------- | ------------------------ | ------------------------ | --------------------------- |
-| 100 K         | 57MB      | < 8 ms                   | < 1 ms                | < 7 ms                   | < 6 ms                   | < ❓ ms                     |
-| 500 K         | 288MB     | < 10 ms                  | < 1 ms                | < 7 ms                   | < 10 ms                  | < ❓ ms                     |
-| 1 M           | 577MB     | < 12 ms                  | < 1 ms                | < 7 ms                   | < 13 ms                  | < ❓ ms                     |
-| 3 M           | 1.74GB    | < 20 ms                  | < 2 ms                | < 18 ms                  | < 28 ms                  | < ❓ ms                     |
-| 6 M           | ?? GB     | < ? ms                   | < ? ms                | < ? ms                   | < ? ms                   | < ❓ ms                     |
+| Records count | File size | 1️⃣ Action - Insert a record | 2️⃣ Action - Get a record | 3️⃣ Action - Update a record | 4️⃣ Action - Delete a record |
+| ------------- | --------- | --------------------------- | ------------------------ | --------------------------- | --------------------------- |
+| 100 K         | 57MB      | < 8 ms                      | < 3 ms                   | < 7 ms                      | < 6 ms                      |
+| 500 K         | 288MB     | < 10 ms                     | < 3 ms                   | < 7 ms                      | < 10 ms                     |
+| 1 M           | 577MB     | < 12 ms                     | < 3 ms                   | < 7 ms                      | < 13 ms                     |
+| 3 M           | 1.73GB    | < 20 ms                     | < 4 ms                   | < 18 ms                     | < 28 ms                     |
 
-**Get a record** : this process involves searching for the record by its key, obtaining it, and decompressing its value column.
+---
 
-**Update a record**: this process involves searching for it by key, retrieving its ref_cnt value, incrementing it by one, and then saving the updated record back to the database.
+| Records count | File size | 5️⃣ Action - Batch delete TTL records |
+| ------------- | --------- | ------------------------------------ |
+| 100 K         | 57MB      | < 4 sec, 21145 row                   |
+| 500 K         | 288MB     | < 12 sec, 21566 row                  |
+| 1 M           | 577MB     | < 23 sec, 21773 row                  |
+| 3 M           | 1.73GB    | < 45 sec, 20193 rows                 |
 
-**Delete a record**: this process involves searching for it by key, and then delete it from database.
+> Delete '20193' records from a database containing '3M' records.
 
-**Delete TTL record** TODO
+---
+
+2️⃣ **Get a record** : this process involves searching for the record by its key, obtaining it, and decompressing its value column.
+
+3️⃣ **Update a record**: this process involves searching for it by key, retrieving its ref_cnt value, incrementing it by one, and then saving the updated record back to the database.
+
+4️⃣ **Delete a record**: this process involves searching for it by key, and then delete it from database.
+
+5️⃣ **Batch delete TTL records**
+this process involves searching for the last reference time of a record (in the `ref_last` column) and deleting the record if it falls within a specific range.
+
+```
+sqlite3 scancache.db 'select count(\*) from cache where ref_last>=1711168520 and ref_last<=1711168720'
+```
 
 > [!NOTE]
 > memory and disk usage measurements are not available in this initial version. We can conduct these measurements in a later stage.
