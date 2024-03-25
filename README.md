@@ -22,7 +22,7 @@ Below are several quotes from Slack.
 - disk access probably fast enough for scanning purpose, the downside of current approach is there are a lot of files
   - Yes, the only issue now is the file allocations on the (N\*4KB). Some file space might be spoiled.
 - There is another high-level structure and it might keep changing whenever it is referenced (read)...... The frequency is very high.
-  - the ref_cnt and ref_last are meta data of this key, and it need to be changed quite frequent, right? like ref_cnt++
+  - the ref_cnt and ref_last are meta data of this key, and it need to be changed quite frequent, right? like `ref_cnt++`
 
 > [!NOTE]
 > I presume that the data isn't shared across Pods/Nodes. If there's a need to share data among Pods and across Nodes, it's not practical to use SQLite directly.
@@ -139,11 +139,11 @@ CREATE TABLE cache (id INTEGER NOT NULL PRIMARY KEY,
 
 Here are several articles concerning SQLite usage and its performance:
 
-- [35% Faster Than The Filesystem](https://www.sqlite.org/fasterthanfs.html)
+1️⃣ [35% Faster Than The Filesystem](https://www.sqlite.org/fasterthanfs.html)
 
-> in 1.2. Related Studies, A [2022 study](https://github.com/chrisdavies/dbench) found that SQLite is roughly twice as fast at real-world workloads compared to Btrfs and Ext4 on Linux.
+> in 1.2. Related Studies, A [2022 study, Basic benchmarks for SQLite vs file system (btrfs on a 2020 Dell XPS SSD).](https://github.com/chrisdavies/dbench) found that SQLite is roughly twice as fast at real-world workloads compared to Btrfs and Ext4 on Linux.
 
-[Appropriate Uses For SQLite](https://www.sqlite.org/whentouse.html)
+2️⃣ [Appropriate Uses For SQLite](https://www.sqlite.org/whentouse.html)
 
 **Replacement for ad hoc disk files**
 
