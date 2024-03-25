@@ -232,7 +232,7 @@ Pickup 1000 keys randomly...
 
 </details>
 
-<details><summary>Delete</summary>
+<details><summary>Delete by key</summary>
 
 ```
 neuvector@ubuntu2204-E:~/myprojects/scanner-cache$ ./scancache -action delete -count 1000
@@ -253,7 +253,7 @@ Pickup 1000 keys randomly...
 
 </details>
 
-<details><summary>Search</summary>
+<details><summary>Search by key</summary>
 
 ```
 Use sqlite cli to get some keys
