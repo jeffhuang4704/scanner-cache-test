@@ -9,7 +9,7 @@
 - [Section 1: Background](#section-1-background)
 - [Section 2: Test Result](#section-2-test-result)
 - [Section 3: Database Schema](#section-3-database-schema)
-- [Section 4: Some references](#section-3-database-schema)
+- [Section 4: Some references](#section-4-some-references)
 - [Section 5: Test Program Usage](#section-5-test-program-usage)
 
 ## Section 1: Background
@@ -141,15 +141,15 @@ Here are several articles concerning SQLite usage and its performance:
 
 - [35% Faster Than The Filesystem](https://www.sqlite.org/fasterthanfs.html)
 
-> A [2022 study](https://github.com/chrisdavies/dbench) found that SQLite is roughly twice as fast at real-world workloads compared to Btrfs and Ext4 on Linux.
-
-> Replacement for ad hoc disk files
+> in 1.2. Related Studies, A [2022 study](https://github.com/chrisdavies/dbench) found that SQLite is roughly twice as fast at real-world workloads compared to Btrfs and Ext4 on Linux.
 
 [Appropriate Uses For SQLite](https://www.sqlite.org/whentouse.html)
 
+**Replacement for ad hoc disk files**
+
 > Many programs use fopen(), fread(), and fwrite() to create and manage files of data in home-grown formats. SQLite works particularly well as a replacement for these ad hoc data files. Contrary to intuition, SQLite can be faster than the filesystem for reading and writing content to disk.
 
-Internal or temporary databases
+**Internal or temporary databases**
 
 > For programs that have a lot of data that must be sifted and sorted in diverse ways, it is often easier and quicker to load the data into an in-memory SQLite database and use queries with joins and ORDER BY clauses to extract the data in the form and order needed rather than to try to code the same operations manually. Using an SQL database internally in this way also gives the program greater flexibility since new columns and indices can be added without having to recode every query.
 
