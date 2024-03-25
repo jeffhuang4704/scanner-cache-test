@@ -141,6 +141,8 @@ Here are several articles concerning SQLite usage and its performance:
 
 1️⃣ [35% Faster Than The Filesystem](https://www.sqlite.org/fasterthanfs.html)
 
+> SQLite reads and writes small blobs (for example, thumbnail images) 35% faster¹ than the same blobs can be read from or written to individual files on disk using fread() or fwrite(). Furthermore, a single SQLite database holding 10-kilobyte blobs uses about 20% less disk space than storing the blobs in individual files.
+
 > in 1.2. Related Studies, A [2022 study, Basic benchmarks for SQLite vs file system (btrfs on a 2020 Dell XPS SSD).](https://github.com/chrisdavies/dbench) found that SQLite is roughly twice as fast at real-world workloads compared to Btrfs and Ext4 on Linux.
 
 2️⃣ [Appropriate Uses For SQLite](https://www.sqlite.org/whentouse.html)
