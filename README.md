@@ -52,6 +52,77 @@ Environment: lab VM (10.1.45.44) , Ubuntu 22.04
 > Delete '20193' records from a database containing '3M' records.
 
 ---
+| Records count | File size | 6️⃣ Action - Batch delete TTL records (10%) |
+| ------------- | --------- | ------------------------------------ |
+| 1 M           | 577MB     | < 42 sec, 100000 rows                 |
+
+<details><summary>Sample value</summary>
+
+```
+neuvector@ubuntu2204-E:~/myprojects/scanner-cache-test$ while true;do ps -p 3687889 -o ppid,
+pid,rss | tee -a  monitor-ps;sleep 1;done
+   PPID     PID   RSS
+3630722 3687889  4748
+   PPID     PID   RSS
+3630722 3687889  4748
+   PPID     PID   RSS
+3630722 3687889  4748
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+3630722 3687889  8360
+   PPID     PID   RSS
+   PPID     PID   RSS
+
+```
+
+</details>
+
+---
 
 2️⃣ **Get a record** : this process involves searching for the record by its key, obtaining it, and decompressing its value column.
 
