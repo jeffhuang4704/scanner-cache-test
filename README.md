@@ -53,9 +53,14 @@ Environment: lab VM (10.1.45.44) , Ubuntu 22.04
 > Delete '20193' records from a database containing '3M' records.
 
 ---
+
 | Records count | File size | 6️⃣ Action - Batch delete TTL records (10%) |
-| ------------- | --------- | ------------------------------------ |
-| 1 M           | 577MB     | < 42 sec, 100000 rows    (memory, see below)             |
+| ------------- | --------- | ------------------------------------------ |
+| 1 M           | 577MB     | < 42 sec, 100000 rows (memory, see below)  |
+
+> [!IMPORTANT]
+> The database will be locked during the period of massive deletion.
+> We may consider spreading out this operation to minimize the duration of the lock.
 
 <details><summary>Memory readings</summary>
 
