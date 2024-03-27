@@ -3,7 +3,7 @@
 ### History
 
 - v1 - 2024/03/22, initial version
-- v2 - 2024/03/26, add memory reading
+- v2 - 2024/03/26, add prune 10% of records; add memory reading in 5️⃣ and 6️⃣
 
 ## Table of Contents
 
@@ -43,20 +43,20 @@ Environment: lab VM (10.1.45.44) , Ubuntu 22.04
 
 ---
 
-| Records count | File size | 5️⃣ Action - Batch delete TTL records |
-| ------------- | --------- | ------------------------------------ |
-| 100 K         | 57MB      | < 4 sec, 21145 rows                  |
-| 500 K         | 288MB     | < 12 sec, 21566 rows                 |
-| 1 M           | 577MB     | < 23 sec, 21773 rows                 |
-| 3 M           | 1.73GB    | < 45 sec, 20193 rows                 |
+| Records count | File size | 5️⃣ Action - Batch delete TTL records             |
+| ------------- | --------- | ------------------------------------------------ |
+| 100 K         | 57MB      | < 4 sec, 21145 rows (RSS 4404 => 8616)           |
+| 500 K         | 288MB     | < 12 sec, 21566 rows (RSS 4656=>8604)            |
+| 1 M           | 577MB     | < 23 sec, 21773 rows (RSS 5060 => 8604)          |
+| 3 M           | 1.73GB    | < 45 sec, 20193 rows (RSS 5252 => 8648 => 10776) |
 
 > Delete '20193' records from a database containing '3M' records.
 
 ---
 
-| Records count | File size | 6️⃣ Action - Batch delete TTL records (10%) |
-| ------------- | --------- | ------------------------------------------ |
-| 1 M           | 577MB     | < 42 sec, 100000 rows (memory, see below)  |
+| Records count | File size | 6️⃣ Action - Batch delete TTL records (10%)                 |
+| ------------- | --------- | ---------------------------------------------------------- |
+| 1 M           | 577MB     | < 42 sec, 100000 rows (RSS 4748 => 8360, detail see below) |
 
 > [!IMPORTANT]
 > The database will be locked during the period of massive deletion.
