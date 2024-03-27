@@ -3,6 +3,7 @@
 ### History
 
 - v1 - 2024/03/22, initial version
+- v2 - 2024/03/26, add memory reading
 
 ## Table of Contents
 
