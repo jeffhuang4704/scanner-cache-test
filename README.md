@@ -69,7 +69,7 @@ pid,rss | tee -a  monitor-ps;sleep 1;done
    PPID     PID   RSS
 3630722 3687889  4748
    PPID     PID   RSS
-3630722 3687889  8360
+3630722 3687889  8360    👈 start
    PPID     PID   RSS
 3630722 3687889  8360
    PPID     PID   RSS
