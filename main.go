@@ -7,6 +7,7 @@ import (
 	"flag"
 	"fmt"
 	"math/rand"
+	"os"
 	"time"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -19,7 +20,7 @@ func main() {
 	// ./scancache -action read -count 1000
 	// ./scancache -action update -count 1000
 
-	action := flag.String("action", "", "Action to perform (create, read, update, delete (ttl_delete) and search)")
+	action := flag.String("action", "", "Action to perform (create, read, update, delete, ttl_delete (20k), ttl_delete2 (10 percent) and search)")
 	count := flag.Int("count", 1000, "Number of times to perform the action")
 	search_key := flag.String("key", "", "Key to search")
 
@@ -67,6 +68,22 @@ func main() {
 		ref_last_end = 1711157260
 
 		actionTTLDelete(ref_last_start, ref_last_end)
+	case "ttl_delete2":
+		pid := os.Getpid()
+		fmt.Printf("prune 10 percent of the records. current pid=%d\n", pid)
+		fmt.Println("👉 start monitor script and press ENTER to continue..")
+		var input string
+		fmt.Scanln(&input)
+
+		// for 1M db
+		// 1711168520 and ref_last<=1711168720
+		ref_last_start := 1711168520
+		ref_last_end := 1711168720
+
+		actionTTLDelete(ref_last_start, ref_last_end)
+
+		fmt.Println("👉 it's done.  press ENTER to exit.")
+
 	default:
 		fmt.Println("❌ Invalid action provided")
 		flag.PrintDefaults()
