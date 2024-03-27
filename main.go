@@ -83,6 +83,7 @@ func main() {
 		actionTTLDelete(ref_last_start, ref_last_end)
 
 		fmt.Println("👉 it's done.  press ENTER to exit.")
+		fmt.Scanln(&input)
 
 	default:
 		fmt.Println("❌ Invalid action provided")
