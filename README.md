@@ -54,10 +54,10 @@ Environment: lab VM (10.1.45.44) , Ubuntu 22.04
 
 ---
 
-| Records count | File size | 6️⃣ Action - Batch delete TTL records (10%)                 |
-| ------------- | --------- | ---------------------------------------------------------- |
-| 1 M           | 577MB     | < 42 sec, 100000 rows (RSS 4748 => 8360, detail see below) |
-| 3 M           | 1.73GB    | < 2 min, 300000 rows (RSS 4748 => 8400 => 9984 => 10820)   |
+| Records count | File size | 6️⃣ Action - Batch delete TTL records (10%)                       |
+| ------------- | --------- | ---------------------------------------------------------------- |
+| 1 M           | 577MB     | < 42 sec, prune 100000 rows (RSS 4748 => 8360, detail see below) |
+| 3 M           | 1.73GB    | < 2 min, prune 300000 rows (RSS 4748 => 8400 => 9984 => 10820)   |
 
 > [!IMPORTANT]
 > The database will be locked during the period of massive deletion.
